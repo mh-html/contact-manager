@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { v4 } from "uuid";
 import ContactListItem from "./ContactListItem";
-import { inputs } from "./constants/Inputs";
+import { INPUTS } from "./constants/INPUTS";
 
 function ContactManager() {
   const [contacts, setContacts] = useState([]);
@@ -13,8 +13,7 @@ function ContactManager() {
     phone: "",
   });
 
-  const updateContactField = (event) => {
-    const { name, value } = event.target;
+  const updateContactField = ({ target: { name, value } }) => {
     setContact((prevContact) => ({ ...prevContact, [name]: value, id: v4() }));
   };
 
@@ -32,15 +31,13 @@ function ContactManager() {
     <div>
       <form onSubmit={sumbitHandler} className="p-3 shadow-lg rounded-md">
         <div className="grid grid-cols-2 gap-y-3 gap-x-2">
-
-          {inputs.map((input, index) => {
-            const {type, placeholder, name} = input
+          {INPUTS.map(({ type, placeholder, name }, index) => {
             return (
               <input
                 key={index}
                 type={type}
                 placeholder={placeholder}
-                className='px-2 py-1 border-2 border-gray-400 rounded-md outline-blue-600'
+                className="px-2 py-1 border-2 border-gray-400 rounded-md outline-blue-600"
                 name={name}
                 value={contact[name]}
                 onChange={updateContactField}
@@ -65,7 +62,7 @@ function ContactManager() {
               <ContactListItem
                 key={contact.id}
                 info={contact}
-                handleContactDeletion={handleContactDeletion}
+                handleContactDeletion={() => handleContactDeletion(contact.id)}
               />
             ))
           ) : (
