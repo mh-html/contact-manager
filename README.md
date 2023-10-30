@@ -1,7 +1,25 @@
+# Contact App
+
+A program to manage the list of contacts, the possibility of adding and deleting contacts
+
+First, install dependencies for the client:
+
+```bash
+npm i
+```
+
+Then, run project:
+
+```bash
+npm run dev
+```
+
+If the browser does not open, copy this address to the url
+[http://localhost:5173](http://localhost:5173)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
